@@ -70,6 +70,7 @@ Proyek ini dikembangkan sebagai bagian dari Tugas Akhir/Skripsi, dengan fokus ut
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fe32528c-4537-4511-a11f-c9421eb3a1dd" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/89c7f73c-ebac-4f71-887e-a8f19eae8b89" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/052f81ee-3427-40f1-814d-ad13a4bd01a4" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4e6511b9-f972-4b49-b938-cce70d9f2af1" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f46b1458-4317-4035-8c0d-7a9e63c828e4" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/161c2992-8e77-4ad9-923e-1485f8a86bc0" />
