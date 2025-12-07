@@ -2,7 +2,6 @@
 
 [![PHP Version](https://img.shields.io/badge/php-8.0%2B-blue.svg)](https://www.php.net/)
 [![Database](https://img.shields.io/badge/database-MySQL-orange.svg)](https://www.mysql.com/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 Aplikasi keamanan dokumen berbasis web yang dirancang untuk mengamankan file digital menggunakan implementasi algoritma **Advanced Encryption Standard (AES-128)** dan **Data Encryption Standard (DES-64)**.
 
