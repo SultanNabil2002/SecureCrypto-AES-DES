@@ -1,0 +1,127 @@
+/* Kriptografi-Aes/assets/css/encrypt-style.css */
+
+.form-container {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Pusatkan form-card jika lebarnya lebih kecil */
+    align-items: flex-start; /* Mulai dari atas */
+}
+
+.form-card {
+    background: var(--white);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 700px; /* Batasi lebar maksimum form */
+}
+
+.form-card .cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: var(--black1);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.form-control,
+.form-control-file {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--blue); /* Warna border saat fokus */
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(42, 33, 133, 0.25); /* Efek shadow saat fokus, sesuaikan warna */
+}
+
+.form-control-file {
+    padding: 8px; /* Sedikit berbeda untuk input file */
+}
+
+.form-text.text-muted {
+    font-size: 0.8rem;
+    color: var(--black2);
+    margin-top: 5px;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px; /* Jarak antar tombol */
+    margin-top: 30px;
+}
+
+.button-group .btn {
+    flex-grow: 1; /* Buat tombol mengambil ruang yang sama jika ada 2 */
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: #1e176a; /* Warna biru sedikit lebih gelap saat hover */
+}
+
+.btn-secondary {
+    background-color: var(--gray);
+    color: var(--black1);
+    border: 1px solid #ccc;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e6ea;
+}
+
+#encryptionStatus {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    /* Gaya untuk pesan sukses atau error bisa ditambahkan di sini nanti */
+}
+
+/* Penyesuaian responsive untuk form jika perlu */
+@media (max-width: 576px) {
+    .form-card {
+        padding: 20px;
+    }
+    .form-card .cardHeader h2 {
+        font-size: 1.5rem;
+    }
+    .button-group {
+        flex-direction: column; /* Tombol jadi vertikal di layar kecil */
+    }
+}

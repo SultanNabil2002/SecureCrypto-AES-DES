@@ -1,0 +1,349 @@
+/* Kriptografi-Aes/assets/css/daftar_dokumen.css */
+
+/* === Pengaturan Umum Halaman (di luar tabel) === */
+.page-content-header {
+    padding: 0px 20px 10px 20px; /* Padding Atas, Kanan, Bawah, Kiri */
+    margin-bottom: 20px;         /* Jarak bawah dari header ke konten di bawahnya */
+}
+
+.page-content-header h2 {
+    font-weight: 600;
+    color: var(--blue);        /* Warna dari variabel global di dashboard.css */
+    font-size: 1.8rem;         /* Ukuran font judul halaman */
+}
+
+.document-tables-container { /* Kontainer untuk semua kartu tabel di halaman ini */
+    padding: 0 20px 20px 20px; /* Padding agar konten tidak mepet ke tepi .main */
+    display: grid;             /* Menggunakan grid untuk menata kartu tabel */
+    gap: 30px;                 /* Jarak antar kartu tabel jika ada lebih dari satu (misal terenkripsi & terdekripsi) */
+}
+
+/* === Styling untuk Setiap Kartu yang Membungkus Tabel === */
+.document-list-card {
+    position: relative;       /* Untuk positioning elemen anak jika ada */
+    display: block;           /* Kartu akan mengambil lebar penuh jika kontainernya tidak grid/flex */
+    min-height: 200px;        /* Tinggi minimal kartu agar tidak terlalu pendek jika tabel kosong */
+    background: var(--white); /* Warna latar kartu */
+    padding: 20px;            /* Padding internal di dalam kartu, memberi ruang antara border kartu dan tabel */
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08); /* Efek bayangan halus */
+    border-radius: 15px;      /* Sudut kartu yang melengkung */
+    overflow-x: auto;         /* INI PENTING: Membuat scrollbar horizontal MUNCUL PADA KARTU INI
+                                 jika tabel di dalamnya lebih lebar dari lebar kartu.
+                                 Ini solusi untuk desktop jika kolom sangat banyak. */
+}
+
+/* Styling untuk Header di Dalam Setiap Kartu Tabel (misal "Dokumen Terenkripsi") */
+.document-list-card .cardHeader {
+    display: flex;                /* Menggunakan flexbox untuk menata judul dan tombol (jika ada) */
+    justify-content: space-between; /* Judul di kiri, tombol di kanan */
+    align-items: center;          /* Menyejajarkan item secara vertikal di tengah */
+    padding-bottom: 8px;          /* Jarak dari teks/tombol ke garis bawah */
+    margin-bottom: 15px;          /* Jarak dari garis bawah header ke tabel di bawahnya */
+    border-bottom: 1px solid var(--gray); /* Garis pemisah */
+}
+
+.document-list-card .cardHeader h3 {
+    font-weight: 600;
+    color: var(--blue);
+    font-size: 1.3rem;            /* Ukuran font judul kartu (misal "Dokumen Terenkripsi") */
+}
+
+.document-list-card .cardHeader .btn { /* Untuk tombol "View All" jika ada di header kartu */
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+.document-list-card .cardHeader .btn:hover {
+    background-color: #1e176a; /* Warna hover sedikit lebih gelap */
+}
+
+/* === Styling Tabel Umum === */
+.document-list-card table {
+    width: 100%;                /* Tabel mencoba mengambil lebar penuh dari .document-list-card */
+    border-collapse: collapse;  /* Menggabungkan border sel agar terlihat sebagai satu garis */
+    /* table-layout: fixed; */  /* Jika diaktifkan, lebar kolom akan lebih kaku sesuai definisi di th/td pertama.
+                                   Bisa membantu jika kolom 'Deskripsi' terlalu dominan, tapi bisa memotong teks.
+                                   Coba aktifkan jika pembagian lebar kolom di bawah tidak cukup. */
+}
+
+/* Styling untuk Header Tabel (<thead></thead>) */
+.document-list-card table thead th { /* Menggunakan <th> untuk sel header agar lebih semantik */
+    font-weight: 600;           /* Teks tebal */
+    color: var(--black1);
+    background-color: var(--gray); /* Latar belakang untuk header */
+    padding: 10px 12px;         /* Padding sel header (atas/bawah, kiri/kanan) */
+    text-align: center;         /* SEMUA TEKS HEADER RATA TENGAH */
+    border-bottom: 2px solid #e0e0e0; /* Garis bawah header yang lebih tebal */
+    font-size: 0.8rem;          /* Ukuran font header */
+    white-space: nowrap;        /* Mencegah teks header wrap ke baris baru (penting jika kolom sempit) */
+}
+
+/* Styling untuk Baris Isi Tabel (<tbody><tr></tr></tbody>) */
+.document-list-card table tbody tr {
+    color: var(--black1);
+    border-bottom: 1px solid #f0f0f0; /* Garis pemisah antar baris yang halus */
+}
+
+.document-list-card table tbody tr:last-child {
+    border-bottom: none;        /* Hilangkan border untuk baris data terakhir */
+}
+
+.document-list-card table tbody tr:hover {
+    background-color: #f5f5f5; /* Warna latar saat baris di-hover mouse */
+}
+
+/* Styling untuk Sel Data Tabel (<tbody><td></td></tbody>) */
+.document-list-card table tbody tr td {
+    padding: 9px 10px;          /* Padding sel data */
+    font-size: 0.78rem;         /* Ukuran font isi data, sedikit lebih kecil dari header */
+    vertical-align: middle;     /* Sejajarkan konten sel secara vertikal di tengah */
+    text-align: center;           /* Default alignment untuk data adalah rata kiri */
+    word-break: break-word;     /* Izinkan teks panjang (seperti nama file atau deskripsi) untuk pindah baris jika diperlukan agar tidak merusak layout kolom */
+    /* white-space: nowrap; */  /* Jika diaktifkan, teks di sel tidak akan wrap, dan akan mendorong scroll horizontal jika tabelnya di-setting min-width */
+}
+
+/* table tr td {
+    border: 1px solid red;
+} */
+
+/* --- Pengaturan Alignment dan Lebar Kolom Spesifik untuk Tampilan Desktop --- */
+/* No. */
+.document-list-card table th[data-label="No."],
+.document-list-card table td[data-label="No."] { width: 4%; /* text-align: center; sudah default */ }
+
+/* Nama File Asli */
+.document-list-card table th[data-label="Nama File Asli"],
+.document-list-card table td[data-label="Nama File Asli"] { width: 18%; }
+
+/* File Enkripsi */
+.document-list-card table th[data-label="File Enkripsi"],
+.document-list-card table td[data-label="File Enkripsi"] { width: 18%; }
+
+/* Algoritma */
+.document-list-card table th[data-label="Algoritma"],
+.document-list-card table td[data-label="Algoritma"] { width: 8%; /* text-align: center; sudah default */ }
+
+/* Ukuran Asli (KB) */
+.document-list-card table th[data-label="Ukuran Asli (KB)"],
+.document-list-card table td[data-label="Ukuran Asli (KB)"] { width: 9%; /* text-align: center; sudah default */ }
+
+/* Ukuran Enkrip (KB) */
+.document-list-card table th[data-label="Ukuran Enkrip (KB)"],
+.document-list-card table td[data-label="Ukuran Enkrip (KB)"] { width: 9%; /* text-align: center; sudah default */ }
+
+/* Durasi Enkripsi/Dekripsi */
+.document-list-card table th[data-label^="Durasi"],
+.document-list-card table td[data-label^="Durasi"] { width: 9%; /* text-align: center; sudah default */ }
+
+/* Tgl. Unggah / Tgl. Unggah Asli */
+.document-list-card table th[data-label^="Tgl. Unggah"],
+.document-list-card table td[data-label^="Tgl. Unggah"] { width: 10%; /* text-align: center; sudah default */ }
+
+/* Deskripsi */
+.document-list-card table th[data-label="Deskripsi"],
+.document-list-card table td[data-label="Deskripsi"] { 
+    width: auto; 
+    min-width: 120px; 
+    /* text-align: left; sudah diatur di atas */
+}
+
+/* Aksi */
+.document-list-card table th[data-label="Aksi"],
+.document-list-card table td[data-label="Aksi"] { 
+    width: 13%; 
+    min-width: 160px; 
+    /* text-align: center; sudah default */
+}
+
+/* Styling untuk Tombol Aksi di dalam tabel */
+.btn-aksi {
+    display: inline-block;
+    padding: 5px 8px; 
+    margin: 2px;
+    font-size: 0.75rem; 
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    border: none;
+    color: black; 
+    min-width: 70px; /* Lebar minimal per tombol aksi */
+}
+.btn-aksi:hover { opacity: 0.85; }
+.btn-dekripsi { background-color: #28a745; } /* Hijau */
+.btn-download { background-color: #17a2b8; } /* Biru Info */
+.btn-hapus { background-color: #dc3545; } /* Merah */
+
+/* Styling untuk Pagination */
+.pagination {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.pagination a {
+    color: var(--blue);
+    padding: 8px 12px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+.pagination a.active {
+    background-color: var(--blue);
+    color: white;
+    border: 1px solid var(--blue);
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+/* ====================== RESPONSIVE DESIGN UNTUK TABEL (MOBILE) ========================== */
+/* Pendekatan: Tampilan Kartu dengan beberapa kolom disembunyikan dan label data */
+
+@media (max-width: 768px) { /* Target untuk tablet potrait dan HP besar */
+    .document-tables-container {
+        padding: 0 10px 10px 10px; 
+        grid-template-columns: 1fr; /* Pastikan kartu tabel bertumpuk vertikal */
+    }
+    .document-list-card {
+        padding: 10px; 
+        overflow-x: visible; /* Matikan scroll horizontal karena kita akan ubah jadi kartu */
+    }
+
+    .document-list-card .cardHeader h3 {
+        font-size: 1.1rem; 
+    }
+     .document-list-card .cardHeader .btn { /* Tombol di header kartu (jika ada) */
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+
+    /* Sembunyikan header tabel tradisional di mobile */
+    .document-list-card table thead {
+        display: none; 
+    }
+
+    /* Sembunyikan kolom-kolom yang kurang penting di tampilan mobile untuk menghemat ruang */
+    /* Kolom yang disembunyikan tidak akan ada labelnya juga */
+    .document-list-card table td[data-label="File Enkripsi"],
+    .document-list-card table td[data-label="Ukuran Enkrip (KB)"],
+    .document-list-card table td[data-label="Durasi Enkripsi"], /* Opsional, bisa ditampilkan jika penting */
+    .document-list-card table td[data-label="Durasi Dekripsi"], /* Opsional */
+    .document-list-card table td[data-label="Deskripsi"] { /* Deskripsi biasanya panjang, sembunyikan di tampilan ringkas */
+        display: none; 
+    }
+
+    /* Ubah elemen tabel menjadi block agar bisa ditata ulang seperti kartu */
+    .document-list-card table,
+    .document-list-card table tbody,
+    .document-list-card table tr,
+    .document-list-card table td {
+        display: block; 
+        width: 100% !important; /* Ambil lebar penuh */
+    }
+
+    .document-list-card table tr {
+        border: 1px solid #e0e0e0; 
+        margin-bottom: 10px; /* Jarak antar kartu baris */
+        border-radius: 8px;
+        padding: 10px; /* Padding internal untuk setiap "kartu" baris */
+        background: var(--white); 
+    }
+    .document-list-card table tbody tr:hover {
+        background: #f9f9f9; 
+    }
+
+    .document-list-card table td {
+        border: none; /* Hilangkan border internal sel */
+        border-bottom: 1px dashed #eee; /* Garis putus-putus tipis antar data dalam satu kartu */
+        position: relative;
+        padding: 8px 5px 8px 45%; /* Atas, Kanan, Bawah, Kiri (Padding kiri untuk ruang label) */
+        text-align: right !important; /* Data rata kanan */
+        white-space: normal;    /* Izinkan teks data wrap */
+        min-height: 22px; 
+        font-size: 0.8rem; 
+        line-height: 1.4; 
+    }
+    .document-list-card table td:last-of-type { /* Hilangkan border bawah untuk data terakhir di kartu */
+        border-bottom: none;
+    }
+    
+    /* Ini adalah bagian "ajaib" yang menampilkan label dari atribut data-label */
+    .document-list-card table td::before {
+        content: attr(data-label); /* Ambil teks dari atribut 'data-label' di HTML td */
+        position: absolute;        /* Posisikan absolut relatif terhadap td */
+        left: 10px;                /* Jarak label dari kiri td */
+        top: 8px;                  /* Jarak label dari atas td (sesuaikan dengan padding-top td) */
+        width: calc(45% - 20px);   /* Lebar untuk area label (Padding kiri td - padding kiri label - padding kanan label) */
+        padding-right: 10px;       /* Jarak antara teks label dan data */
+        white-space: normal;       /* Izinkan teks label wrap jika panjang */
+        font-weight: bold;         /* Teks label tebal */
+        text-align: left !important; /* Label rata kiri */
+        color: var(--blue);        /* Warna teks label */
+        font-size: 0.75rem;        /* Ukuran font label */
+        line-height: 1.4;          /* Samakan dengan td agar alignment vertikal baik */
+    }
+
+    /* Penyesuaian untuk kolom No. agar tidak ada label dan tampil beda */
+    .document-list-card table tbody tr td[data-label="No."]{
+        padding-left: 10px !important; /* Tidak perlu padding besar untuk label */
+        text-align: left !important;   /* Nomor rata kiri */
+        font-weight: bold;             /* Nomor tebal */
+        background-color: var(--gray); /* Beri sedikit latar beda untuk nomor */
+        border-bottom: 1px solid #ddd; /* Garis pemisah di bawah nomor */
+    }
+    .document-list-card table tbody tr td[data-label="No."]::before {
+        display: none; /* Sembunyikan pseudo-elemen label untuk kolom No. */
+    }
+
+    /* Penyesuaian untuk kolom Aksi agar tombol menumpuk vertikal */
+    .document-list-card table tbody tr td[data-label="Aksi"] {
+       padding-left: 10px !important; /* Tidak perlu padding besar untuk label */
+       text-align: center !important;   /* Tombol rata tengah */
+       margin-top: 10px;              /* Jarak atas untuk grup tombol */
+    }
+     .document-list-card table tbody tr td[data-label="Aksi"]::before {
+        display: none; /* Sembunyikan pseudo-elemen label untuk kolom Aksi */
+    }
+    .document-list-card table tbody tr td[data-label="Aksi"] .btn-aksi {
+        display: block;         /* Tombol menumpuk */
+        width: calc(100% - 10px); /* Lebar tombol (dikurangi sedikit agar tidak terlalu mepet) */
+        margin: 5px auto;       /* Margin atas-bawah 5px, kiri-kanan auto (tengah) */
+    }
+    .document-list-card table tbody tr td[data-label="Aksi"] .btn-aksi:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) { /* Penyesuaian lebih lanjut untuk layar HP yang sangat kecil */
+    .page-content-header h2 {
+        font-size: 1.2rem; 
+    }
+    .document-list-card .cardHeader h3 {
+        font-size: 1rem; 
+    }
+    .document-list-card table td,
+    .document-list-card table td::before {
+        font-size: 0.7rem; 
+        line-height: 1.3;
+    }
+     .document-list-card table td {
+        padding: 6px 5px 6px 38%; /* Sesuaikan lagi padding kiri untuk label */
+    }
+    .document-list-card table td::before {
+        width: calc(38% - 15px);
+        top: 6px;
+    }
+    .btn-aksi { /* Tombol aksi lebih kecil lagi */
+        padding: 4px 6px;
+        font-size: 0.65rem;
+    }
+}

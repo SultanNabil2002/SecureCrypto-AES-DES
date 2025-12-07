@@ -1,0 +1,210 @@
+/* Kriptografi-Aes/assets/css/dekripsi-style.css */
+/* CSS ini bisa digunakan untuk form dekripsi AES dan DES */
+
+/* Header Halaman Konten (jika belum di-style global di dashboard.css) */
+.page-content-header {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.page-content-header h2 {
+    font-weight: 600;
+    color: var(--blue);
+    font-size: 1.8rem;
+}
+
+/* Kontainer Utama untuk Form */
+.form-container {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Kartu yang Membungkus Form */
+.form-card {
+    background: var(--white);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 650px; /* Lebar maksimum form, bisa disesuaikan */
+}
+
+/* Header di Dalam Kartu Form */
+.form-card .cardHeader {
+    margin-bottom: 25px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--gray);
+}
+
+.form-card .cardHeader h2,
+.form-card .cardHeader h3 { /* Menargetkan h2 dan h3 untuk konsistensi */
+    font-weight: 600;
+    color: var(--blue);
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+/* Info File yang Akan Didekripsi */
+.file-info {
+    margin-bottom: 25px; /* Jarak lebih besar ke form */
+    padding: 12px 15px;
+    background-color: #f0f2f5; /* Warna latar sedikit beda */
+    border-left: 5px solid var(--blue);
+    font-size: 0.9rem;
+    color: var(--black1);
+    border-radius: 4px;
+}
+
+.file-info strong {
+    color: var(--black1);
+    font-weight: 600;
+}
+
+/* Styling untuk Alert (Pesan Error atau Sukses) */
+.alert {
+    padding: 1rem 1.25rem;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: .3rem;
+    text-align: left;
+}
+
+.alert.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.alert.alert-danger a {
+    font-weight: bold;
+    color: #721c24;
+    text-decoration: underline;
+}
+
+.alert.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert.alert-success a.btn-aksi { /* Untuk tombol download di dalam alert */
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Styling Grup Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: var(--black1);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* Styling untuk Input File dan Password */
+.form-control,
+.form-control-file {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+/* Penyesuaian untuk input tipe file */
+.form-control-file {
+    padding: 8px 15px; /* Padding berbeda untuk file input */
+}
+
+.form-control:focus,
+.form-control-file:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--blue);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(42, 33, 133, 0.25);
+}
+
+.form-text.text-muted {
+    font-size: 0.8rem;
+    color: var(--black2);
+    margin-top: 5px;
+}
+
+/* Styling untuk Grup Tombol */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: flex-end; /* Tombol rata kanan */
+}
+
+.button-group .btn {
+    padding: 10px 25px; /* Padding tombol lebih besar */
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.button-group .btn:hover {
+    transform: translateY(-2px); /* Efek hover sedikit terangkat */
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: var(--white);
+}
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: var(--white);
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Styling untuk area status/download di bawah form */
+#decryptionStatus {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 576px) {
+    .form-card {
+        padding: 20px;
+    }
+    .form-card .cardHeader h2,
+    .form-card .cardHeader h3 {
+        font-size: 1.3rem;
+    }
+    .button-group {
+        flex-direction: column; /* Tombol jadi vertikal */
+    }
+    .button-group .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .button-group .btn:last-child {
+        margin-bottom: 0;
+    }
+}

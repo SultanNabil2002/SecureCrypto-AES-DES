@@ -1,0 +1,644 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #2a2185;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+  /* Pastikan tidak ada background putih saat hover untuk item pertama jika ini brand */
+  background-color: transparent !important; 
+}
+
+.navigation ul li:nth-child(1) a {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+.navigation ul li:nth-child(1) a .logo-pt {
+  min-width: 40px;
+  max-width: 45px;
+  height: 40px;
+  margin-right: 10px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation ul li:nth-child(1) a .logo-pt img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+/* Styling untuk teks nama perusahaan */
+.navigation ul li:nth-child(1) a .title.nama-perusahaan {
+  color: var(--white);
+}
+
+.navigation ul li a {
+  position: relative;
+  /* display: block; Dihapus karena flex sudah ada di bawah */
+  width: 100%;
+  display: flex;
+  align-items: center; /* Untuk mensejajarkan ikon dan title secara vertikal */
+  text-decoration: none;
+  color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px; /* Disesuaikan agar sama dengan height untuk centering ion-icon */
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+  vertical-align: middle; /* Membantu centering ion-icon */
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+  z-index: -1; /* Tambahan agar tidak menutupi konten jika ada masalah layering */
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+  z-index: -1; /* Tambahan */
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white); /* Menggunakan var(--gray) agar ada sedikit kontras dengan card putih */
+  /* background: var(--gray); */ /* Opsional: ganti jika ingin latar main berbeda */
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; /* Sedikit lebih banyak padding untuk topbar */
+  background-color: var(--white); /* Beri background putih untuk topbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Shadow halus untuk topbar */
+  position: sticky; /* Membuat topbar tetap di atas saat scroll */
+  top: 0;
+  z-index: 900; /* Di bawah navigasi mobile, tapi di atas konten .main */
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: var(--black1);
+}
+
+.user {
+  position: relative;
+  display: flex; /* Untuk alignment vertikal teks jika topbar memiliki tinggi tetap */
+  align-items: center; /* Menyejajarkan teks secara vertikal di tengah topbar */
+  padding: 0 10px; /* Beri sedikit padding di sekitar teks */
+  cursor: default;
+}
+
+.user span {
+  color: var(--black1); /* Warna teks username */
+  font-weight: 500;   /* Ketebalan font */
+  font-size: 0.9rem;  /* Ukuran font, sesuaikan jika perlu */
+  white-space: nowrap; /* Agar nama tidak wrap jika panjang dan topbar sempit */
+}
+
+/* ======================= Cards ====================== */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Lebih responsif */
+  grid-gap: 20px; /* Sedikit kurangi gap */
+}
+
+.cardBox .card {
+  position: relative;
+  background: var(--white);
+  padding: 25px; /* Sedikit sesuaikan padding */
+  border-radius: 15px; /* Radius lebih smooth */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Sejajarkan ikon dan teks di kartu */
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Shadow lebih halus */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi untuk hover */
+}
+
+.cardBox .card:hover {
+  background: var(--blue);
+  transform: translateY(-5px); /* Efek mengangkat saat hover */
+  box-shadow: 0 10px 20px rgba(42, 33, 133, 0.2); /* Shadow lebih jelas saat hover */
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 600; /* Sedikit lebih tebal */
+  font-size: 2.2rem; /* Sedikit sesuaikan ukuran */
+  color: var(--blue);
+}
+
+.cardBox .card .cardName {
+  color: var(--black2);
+  font-size: 1rem; /* Sedikit sesuaikan ukuran */
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  font-size: 3rem; /* Sedikit sesuaikan ukuran ikon */
+  color: var(--black2);
+}
+
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
+}
+
+/* ================== Order Details List (Daftar Dokumen & Recent Customers di Dashboard) ============== */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Kolom daftar dokumen lebih besar */
+  grid-gap: 30px;
+  margin-top: 10px; /* Beri jarak dari cardBox */
+}
+
+/* PENYESUAIAN/TAMBAHAN UNTUK TABEL DASHBOARD (Berlaku untuk .daftarDokumen dan .recentCustomers) */
+.details .daftarDokumen,
+.details .recentCustomers {
+  position: relative;
+  display: flex; /* Ubah ke flex agar cardHeader dan table bisa diatur */
+  flex-direction: column; /* Susun cardHeader dan table secara vertikal */
+  min-height: 300px; /* Sesuaikan tinggi minimal jika perlu */
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 15px; /* Samakan dengan cardBox */
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Sejajarkan judul dan tombol */
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.details .cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+  font-size: 1.3rem; /* Ukuran judul di dalam kartu tabel */
+}
+
+.details .cardHeader .btn { /* Tombol "View All" */
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+.details .cardHeader .btn:hover {
+  background-color: #1e176a; /* Warna hover */
+}
+
+
+.details .daftarDokumen table,
+.details .recentCustomers table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0; /* Dihapus karena cardHeader sudah ada margin-bottom */
+}
+
+.details .daftarDokumen table thead td,
+.details .daftarDokumen table thead th,
+.details .recentCustomers table thead td,
+.details .recentCustomers table thead th {
+  font-weight: 600;
+  color: var(--black1);
+  background-color: var(--gray);
+  padding: 10px;
+  text-align: left;
+  font-size: 0.85rem; /* Ukuran font header tabel */
+  border-bottom: 2px solid #e0e0e0; /* Garis pemisah header lebih halus */
+}
+
+.details .daftarDokumen table tbody tr,
+.details .recentCustomers table tbody tr {
+  color: var(--black1);
+  border-bottom: 1px solid #f0f0f0; /* Garis antar baris lebih halus */
+}
+
+.details .daftarDokumen table tbody tr:last-child,
+.details .recentCustomers table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.details .daftarDokumen table tbody tr:hover,
+.details .recentCustomers table tbody tr:hover {
+  background-color: #f5f5f5; /* Warna hover yang lebih lembut */
+  /* color: var(--white); Dihapus agar teks tetap kontras */
+}
+
+.details .daftarDokumen table tbody tr td,
+.details .recentCustomers table tbody tr td {
+  padding: 9px 10px; /* Padding sel */
+  font-size: 0.8rem; /* Ukuran font isi tabel */
+  vertical-align: middle;
+}
+
+/* Penyesuaian alignment kolom untuk tabel .daftarDokumen di dashboard/index.php */
+.details .daftarDokumen table tr td:nth-child(1) { /* Nama File Asli */
+  text-align: left;
+}
+.details .daftarDokumen table tr td:nth-child(2) { /* Ukuran File */
+  text-align: center;
+  width: 20%; 
+}
+.details .daftarDokumen table tr td:nth-child(3) { /* Tanggal */
+  text-align: center;
+  width: 25%;
+}
+.details .daftarDokumen table tr td:nth-child(4) { /* Status */
+  text-align: center;
+  width: 20%;
+}
+
+/* Penyesuaian alignment kolom untuk tabel .recentCustomers di dashboard/index.php */
+.details .recentCustomers table tr td:nth-child(1) { /* Username (atau kolom pertama yg berisi imgBx dan h4) */
+  display: flex;
+  align-items: center;
+}
+.details .recentCustomers table tr td:nth-child(2) { /* Role */
+  text-align: left; 
+  width: 30%;
+}
+.details .recentCustomers table tr td:nth-child(3) { /* Terdaftar Sejak */
+  text-align: center;
+  width: 35%;
+}
+
+.recentCustomers .imgBx {
+  position: relative;
+  width: 35px; /* Sedikit lebih kecil */
+  height: 35px;
+  border-radius: 50%; /* Lingkaran sempurna */
+  overflow: hidden;
+  margin-right: 10px;
+}
+.recentCustomers .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recentCustomers table tr td h4 {
+  font-size: 14px; /* Sedikit sesuaikan */
+  font-weight: 500;
+  line-height: 1.2rem;
+  margin: 0; /* Hapus margin default */
+}
+.recentCustomers table tr td h4 span {
+  font-size: 12px; /* Sedikit sesuaikan */
+  color: var(--black2);
+}
+/* Warna teks span di recentCustomers saat hover sudah diatur oleh .recentCustomers table tr:hover */
+
+
+/* Status badges - Anda sudah punya ini, pastikan warnanya sesuai keinginan */
+.status { /* Tambahkan styling dasar untuk semua status jika perlu */
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 12px; /* Ukuran font lebih kecil untuk badge */
+  font-weight: 500;
+  display: inline-block; /* Agar padding dan radius bekerja baik */
+}
+.status.delivered {
+  background: #8de02c;
+  color: var(--white);
+}
+.status.pending {
+  background: #e9b10a;
+  color: var(--white);
+}
+.status.return {
+  background: #f00;
+  color: var(--white);
+}
+.status.inProgress {
+  background: #1795ce;
+  color: var(--white);
+}
+
+/* Tambahkan ini ke dashboard.css jika belum ada */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px 0;
+}
+.pagination a {
+    color: var(--blue);
+    padding: 8px 12px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 2px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+.pagination a.active {
+    background-color: var(--blue);
+    color: white;
+    border: 1px solid var(--blue);
+}
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+.pagination span { /* Untuk "..." */
+    padding: 8px 12px;
+    margin: 0 2px;
+}
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px; /* Navigasi tetap lebar saat aktif di tablet */
+    left: 0;
+    z-index: 1000; /* Pastikan di atas .main */
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px; /* Sesuaikan dengan lebar navigasi saat aktif */
+  }
+  .cardBox {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Kartu lebih adaptif */
+  }
+  .details {
+    grid-template-columns: 1fr; /* Kolom tabel jadi satu di tablet */
+  }
+}
+
+/* Kriptografi-Aes/assets/css/daftar_dokumen.css */
+
+/* ... (CSS Anda untuk desktop yang sudah ada di atas biarkan saja) ... */
+
+/* CSS untuk tabel yang responsif (mengubah jadi tampilan kartu di mobile) */
+@media (max-width: 768px) {
+    .document-tables-container {
+        padding: 0 10px 10px 10px; 
+    }
+    .document-list-card {
+        overflow-x: visible; /* Penting untuk mode kartu agar tidak ada scroll horizontal aneh */
+        padding: 10px; /* Kurangi padding kartu utama sedikit */
+    }
+
+    .document-list-card .cardHeader h3 {
+        font-size: 1.1rem; /* Kecilkan judul kartu */
+    }
+    .document-list-card .cardHeader .btn { /* Tombol di cardHeader */
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+
+
+    .document-list-card table,
+    .document-list-card table thead,
+    .document-list-card table tbody,
+    .document-list-card table th,
+    .document-list-card table td,
+    .document-list-card table tr {
+        display: block; 
+    }
+
+    .document-list-card table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; 
+    }
+
+    .document-list-card table tr {
+        border: 1px solid #e0e0e0; /* Border yang sedikit lebih soft */
+        margin-bottom: 10px; 
+        border-radius: 6px; /* Radius lebih kecil */
+        padding: 10px; /* Padding internal untuk setiap "kartu" baris */
+        background: var(--white); 
+    }
+    .document-list-card table tbody tr:hover {
+        background: #f9f9f9; 
+    }
+
+    .document-list-card table td {
+        border: none;
+        position: relative;
+        padding: 8px 5px 8px 40%; /* Atur padding: Atas Kanan Bawah Kiri(untuk label) */
+                                  /* Kiri 40% untuk ruang label, bisa disesuaikan */
+        text-align: right !important; 
+        white-space: normal; 
+        min-height: 20px; 
+        display: block; /* Ubah dari flex ke block agar lebih sederhana penataannya */
+        font-size: 0.8rem; 
+        line-height: 1.4; /* Line height untuk data */
+    }
+    
+    .document-list-card table td::before {
+        content: attr(data-label); 
+        position: absolute;
+        left: 10px; /* Jarak label dari kiri */
+        top: 8px; /* Jarak label dari atas (sesuaikan dengan padding-top td) */
+        width: calc(40% - 15px); /* Lebar label (40% dari td dikurangi padding kiri td dan padding kanan label) */
+        padding-right: 5px; /* Jarak antara label dan data */
+        white-space: normal; /* Izinkan label wrap jika panjang */
+        font-weight: bold;
+        text-align: left !important;
+        color: var(--blue); 
+        font-size: 0.75rem; 
+        line-height: 1.4; /* Samakan dengan td untuk alignment */
+    }
+
+    /* Kolom yang mungkin tidak butuh label atau butuh perlakuan khusus */
+    .document-list-card table tbody tr td:first-child, /* Kolom No. */
+    .document-list-card table tbody tr td:last-child { /* Kolom Aksi */
+       padding-left: 10px !important; /* Reset padding-left jika tidak ada label */
+       text-align: left !important; /* Untuk Aksi, mungkin lebih baik left atau center */
+       margin-top: 5px;
+    }
+     .document-list-card table tbody tr td:first-child::before,
+     .document-list-card table tbody tr td:last-child::before {
+        content: ""; 
+        display: none; 
+    }
+    
+    /* Khusus untuk kolom Aksi agar tombolnya rapi */
+    .document-list-card table tbody tr td:last-child {
+        text-align: center !important; /* Pusatkan tombol jika ada beberapa */
+    }
+
+    .btn-aksi {
+        padding: 5px 8px; 
+        font-size: 0.7rem; 
+        display: inline-block; 
+        margin: 2px;
+    }
+    /* Jika ingin tombol aksi bertumpuk vertikal di mobile */
+    /* .document-list-card table tbody tr td:last-child .btn-aksi {
+        display: block;
+        width: 90%; 
+        margin: 5px auto;
+    } */
+}
+
+@media (max-width: 480px) {
+    .page-content-header h2 {
+        font-size: 1.2rem; /* Lebih kecil lagi di HP */
+    }
+    .document-list-card .cardHeader h3 {
+        font-size: 1rem; 
+    }
+    .document-list-card table td,
+    .document-list-card table td::before {
+        font-size: 0.75rem; /* Font lebih kecil lagi */
+        line-height: 1.3;
+    }
+     .document-list-card table td {
+        padding: 6px 5px 6px 35%; /* Sesuaikan padding kiri untuk label */
+    }
+    .document-list-card table td::before {
+        width: calc(35% - 15px);
+    }
+
+    .btn-aksi {
+        padding: 4px 6px;
+        font-size: 0.65rem;
+    }
+}

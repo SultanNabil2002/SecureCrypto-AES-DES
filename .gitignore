@@ -1,0 +1,12 @@
+# Abaikan file sistem
+Thumbs.db
+.DS_Store
+
+# Abaikan file hasil enkripsi/dekripsi lokal (agar repo tetap bersih)
+hasil/Terenkripsi/*
+hasil/Terdekripsi/*
+!hasil/Terenkripsi/.gitkeep
+!hasil/Terdekripsi/.gitkeep
+
+# Abaikan file konfigurasi VS Code
+.vscode/

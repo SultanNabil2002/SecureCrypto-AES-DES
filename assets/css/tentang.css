@@ -1,0 +1,93 @@
+/* Kriptografi-Aes/assets/css/tentang.css */
+
+/* Styling untuk konten utama halaman "Tentang Kami" */
+.about-content {
+    padding: 20px;
+    width: 100%;
+    max-width: 900px; /* Batasi lebar konten agar lebih mudah dibaca */
+    margin: 0 auto;   /* Tengahkan konten jika ada max-width */
+}
+
+.about-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.about-card .cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.company-logo-container {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.company-logo {
+    max-width: 150px; /* Sesuaikan ukuran logo */
+    height: auto;
+    border-radius: 8px; /* Opsional: jika ingin sudut logo sedikit melengkung */
+}
+
+.about-section {
+    margin-bottom: 25px;
+}
+
+.about-section h3 {
+    font-size: 1.5rem; /* Ukuran font untuk sub-judul bagian */
+    color: var(--black1);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--gray);
+}
+
+.about-section p {
+    font-size: 1rem; /* Ukuran font untuk paragraf */
+    line-height: 1.6;
+    color: var(--black2);
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.about-section ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 10px;
+    color: var(--black2);
+}
+
+.about-section ul li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.about-section a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.about-section a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments untuk halaman tentang jika perlu */
+@media (max-width: 768px) {
+    .about-content {
+        padding: 15px;
+    }
+    .about-card {
+        padding: 20px;
+    }
+    .about-section h3 {
+        font-size: 1.3rem;
+    }
+    .about-section p,
+    .about-section ul li {
+        font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,222 @@
+/* Kriptografi-Aes/assets/css/pengguna-style.css */
+
+.alert {
+    padding: 15px;
+    margin: 0 20px 20px 20px; /* Atas, Kanan, Bawah, Kiri */
+    border: 1px solid transparent;
+    border-radius: 8px; /* Sudut sedikit melengkung */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Styling untuk Alert Sukses (latar hijau) */
+.alert.alert-success {
+    color: #155724; /* Warna teks gelap */
+    background-color: #d4edda; /* Warna latar hijau muda */
+    border-color: #c3e6cb; /* Warna border hijau lebih gelap */
+}
+
+/* Styling untuk Alert Gagal/Error (latar merah) */
+.alert.alert-danger {
+    color: #721c24; /* Warna teks gelap */
+    background-color: #f8d7da; /* Warna latar merah muda */
+    border-color: #f5c6cb; /* Warna border merah lebih gelap */
+}
+
+.page-content-header {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-bottom: 1px solid var(--gray); /* Garis pemisah opsional */
+    /* border: 3px solid red; */
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+.page-content-header h2 {
+    font-weight: 600;
+    color: var(--blue);
+    font-size: 1.6rem; /* Sedikit lebih kecil agar proporsional */
+}
+
+.content-container {
+    padding: 0 20px 20px 20px;
+}
+
+.content-card {
+    position: relative;
+    display: block; 
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 15px; /* Samakan dengan card lain */
+}
+
+.content-card .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin-bottom: 15px; /* Jarak dari header ke tabel */
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gray);
+}
+
+.content-card .cardHeader h3 {
+    font-weight: 600;
+    color: var(--blue);
+    font-size: 1.3rem; /* Ukuran judul di dalam kartu */
+}
+
+.content-card .cardHeader .btn { /* Tombol "Tambah Pengguna" */
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    background: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 6px;
+}
+.content-card .cardHeader .btn:hover{
+    background-color: #1e176a;
+}
+
+.content-card table {
+    width: 100%;
+    border-collapse: collapse;
+    /* margin-top: 10px; Dihapus, jarak diatur oleh cardHeader */
+}
+
+.content-card table thead th { /* Gunakan TH untuk header tabel */
+    font-weight: 600;
+    color: var(--black1);
+    background-color: var(--gray); 
+    padding: 10px 12px; /* Sedikit lebih banyak padding */
+    text-align: left; /* Default rata kiri untuk header */
+    border-bottom: 2px solid #dee2e6; 
+    font-size: 0.85rem;
+}
+
+/* Rata tengah untuk header kolom tertentu */
+.content-card table thead th[data-label="No."],
+.content-card table thead th[data-label="ID User"],
+.content-card table thead th[data-label="Username"],
+.content-card table thead th[data-label="Role"],
+.content-card table thead th[data-label="Tanggal Dibuat"],
+.content-card table thead th[data-label="Aksi"] {
+    text-align: center;
+}
+
+
+.content-card table tbody tr {
+    color: var(--black1);
+    border-bottom: 1px solid #f0f0f0; 
+}
+
+.content-card table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.content-card table tbody tr:hover {
+    background: #f5f5f5;
+}
+
+.content-card table tbody tr td {
+    padding: 9px 12px; /* Sedikit lebih banyak padding */
+    font-size: 0.85rem; 
+    vertical-align: middle; 
+    text-align: center; /* Default rata kiri untuk data */
+}
+
+/* Penyesuaian alignment dan lebar kolom untuk tabel pengguna */
+.content-card table td[data-label="No."]{
+    width: 5%;
+    text-align: center;
+}
+.content-card table td[data-label="ID User"] {
+    width: 10%;
+    text-align: center;
+}
+.content-card table td[data-label="Username"] {
+    width: auto; /* Biarkan username mengambil sisa ruang */
+    text-align: center;
+}
+.content-card table td[data-label="Role"] {
+    width: 15%;
+    text-align: center;
+}
+.content-card table td[data-label="Tanggal Dibuat"] {
+    width: 20%;
+    text-align: center;
+}
+.content-card table td[data-label="Aksi"] {
+    width: 15%; /* Sesuaikan jika tombolnya ada 2 */
+    text-align: center;
+}
+
+
+.btn-aksi {
+    display: inline-block;
+    padding: 5px 8px; 
+    margin: 0 2px; /* Kurangi margin vertikal agar lebih rapat jika ada 2 tombol */
+    font-size: 0.75rem; 
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    border: none;
+    color: white;
+}
+.btn-aksi:hover { opacity: 0.85; }
+
+.btn-edit { 
+    background-color: #ffc107; 
+    color: var(--black1);
+}
+.btn-hapus {
+    background-color: #dc3545; 
+}
+
+
+/* RESPONSIVE - Menggunakan pendekatan scroll horizontal sederhana */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 0 10px 10px 10px;
+    }
+    .content-card {
+        padding: 15px;
+        overflow-x: auto; 
+    }
+    .content-card .cardHeader h3 {
+        font-size: 1.1rem; /* Lebih kecil lagi */
+    }
+    .content-card table {
+        min-width: 550px; /* Sesuaikan agar muat saat scroll */
+    }
+    .content-card table thead th,
+    .content-card table tbody tr td {
+        white-space: nowrap; 
+        font-size: 0.75rem;
+        padding: 8px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-content-header h2 {
+        font-size: 1.2rem;
+    }
+    .content-card .cardHeader h3 {
+        font-size: 1rem; 
+    }
+    .content-card table {
+        min-width: 450px; /* Sesuaikan lagi */
+    }
+    .content-card table thead th,
+    .content-card table tbody tr td {
+        font-size: 0.7rem; 
+        padding: 6px 5px;
+    }
+     .btn-aksi {
+        padding: 4px 6px;
+        font-size: 0.7rem;
+    }
+}
